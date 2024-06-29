@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Fun Party</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+	font-size: 20px;
+    background-color: #f7d794;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+  }
+  .question {
+    margin: 20px 0;
+  }
+  .reponses {
+    list-style: none;
+    padding: 0;
+  }
+  .reponses li {
+    background-color: #f8a5c2;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  .reponses li:hover {
+    background-color: #f78fb3;
+  }
+  .btn-suivant {
+    display: none; /* Le bouton est caché par défaut */
+    background-color: #63cdda;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  .message {
+    display: none;
+    color: #27ae60;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="question"></div>
+<ul class="reponses"></ul>
+<div class="message"></div>
+<button class="btn-suivant">Question suivante</button>
+
+<script>
+  var quiz = [
+    {
+      question: "Quel est le sport préféré de Lucie ?",
+      reponses: ["Le hockey cosom", "Le volley-ball", "La chasse aux araignées", "La pétanque en cuissard"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+    {
+      question: "À quel âge Lucie a-t-elle fait du vélo pour la première fois ?",
+      reponses: ["4 ans", "5 ans", "6 ans", "14 ans"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "Combien de petits amis Lucie a-t-elle eu avant Oli ?",
+      reponses: ["6", "12", "1", "Olivier est l’amour de sa vie et personne ne pourrait jamais le précéder ou le suivre."],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 22 - 4 ans."
+    },
+	{
+      question: "Combien de cigarettes Lucie fume-t-elle par jour ?",
+      reponses: ["2 paquets", "Ah, c’est pour ça ses dents jaunes ?", "Aucune ", "Juste des cigarettes Popeye"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "Quelle chanson Lucie chante à tue-tête dans sa voiture ?",
+      reponses: ["Lara Fabian - Je suis malade", "Enwoueille enwoueille la tititite ", "Laissez-moi manger ma banane", "Annie Brocoli - Perdu dans l’espace"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "Quel film Lucie regarde sans se lasser ?",
+      reponses: ["Les pilotes en l’air", "Les feux de l’amour", "Tous les chiens vont au paradis", "Elle n’écoute pas la télé, c’est une perte de temps"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "Quel est le sport préféré de Lucie ?",
+      reponses: ["Le hockey cosom", "Le volley-ball", "La chasse aux araignées", "La pétanque en cuissard"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "À quel âge Lucie a-t-elle été propre ?",
+      reponses: ["1 an", "14 mois", "4 ans", "3 mois, c’est un vrai génie"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "Après combien de verres de vin Lucie devient-elle bilingue ?",
+      reponses: ["1, elle l’est déjà", "5", "10, elle a du sang du Saguenay", "Après 2 verres, elle parle couramment l’espagnol"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "Depuis quand Lucie a-t-elle des cheveux gris ?",
+      reponses: ["20 ans", "10 ans", "30 ans", "Elle n’en a aucun, et c’est sa couleur naturelle !"],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "",
+      reponses: ["", "", "", ""],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "",
+      reponses: ["", "", "", ""],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "",
+      reponses: ["", "", "", ""],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "",
+      reponses: ["", "", "", ""],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	{
+      question: "",
+      reponses: ["", "", "", ""],
+      bonneReponse: 1, // La bonne réponse est la première (index 0)
+      message: "Bien joué! C'était à 4 ans."
+    },
+	
+    // Ajoutez d'autres questions ici
+  ];
+
+  var indexQuestionActuelle = 0;
+
+  function afficherQuestion(index) {
+    document.querySelector('.question').textContent = quiz[index].question;
+    var reponsesHTML = '';
+    quiz[index].reponses.forEach(function(reponse, idx) {
+      reponsesHTML += '<li' + (idx === quiz[index].bonneReponse - 1 ? ' style="background-color: #f8a5c2;"' : '') + '>' + reponse + '</li>';
+    });
+    document.querySelector('.reponses').innerHTML = reponsesHTML;
+  }
+
+  document.querySelector('.reponses').addEventListener('click', function(e) {
+    if (e.target.tagName === 'LI') {
+      var bonneReponseIndex = quiz[indexQuestionActuelle].bonneReponse - 1;
+      document.querySelectorAll('.reponses li')[bonneReponseIndex].style.backgroundColor = '#27ae60';
+      document.querySelector('.message').textContent = quiz[indexQuestionActuelle].message;
+      document.querySelector('.message').style.display = 'block';
+      document.querySelector('.btn-suivant').style.display = 'block';
+    }
+  });
+
+  document.querySelector('.btn-suivant').onclick = function() {
+    indexQuestionActuelle = (indexQuestionActuelle + 1) % quiz.length;
+    afficherQuestion(indexQuestionActuelle);
+    document.querySelector('.message').style.display = 'none';
+    this.style.display = 'none'; // Cacher le bouton suivant
+    document.querySelectorAll('.reponses li').forEach(function(li) {
+      li.style.backgroundColor = '#f8a5c2'; // Réinitialiser la couleur de toutes les réponses
+    });
+  };
+
+  afficherQuestion(indexQuestionActuelle);
+</script>
+
+</body>
+</html>
